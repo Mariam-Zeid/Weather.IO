@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const PositionContext = createContext({
   latitude: null,
   longitude: null,
+  setNewPosition: () => {},
 });
 
 export function PositionContextProvider({ children }) {
@@ -27,6 +28,7 @@ export function PositionContextProvider({ children }) {
   const ctxValue = {
     latitude: position.latitude,
     longitude: position.longitude,
+    setNewPosition: setPosition,
   };
   return (
     <PositionContext.Provider value={ctxValue}>
