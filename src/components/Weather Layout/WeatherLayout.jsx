@@ -19,13 +19,20 @@ export default function WeatherLayout() {
     isFetching: isFetchingCurrentWeather,
     fetchWeatherData: fetchCurrentWeather,
     weatherData: currentWeatherData,
-    error: weatherError,
+  } = useFetchWeather({});
+
+  // Forecast Weather API
+  const {
+    isFetching: isFetchingForecastWeather,
+    fetchWeatherData: fetchForecastWeather,
+    weatherData: forecastWeatherData,
   } = useFetchWeather({});
 
   useEffect(() => {
     const fetchAllData = async () => {
       if (latitude !== null && longitude !== null) {
         await fetchCurrentWeather(API_URLS.currentWeather(latitude, longitude));
+        await fetchForecastWeather(API_URLS.forecast(latitude, longitude));
       }
     };
     fetchAllData();
@@ -33,7 +40,7 @@ export default function WeatherLayout() {
 
   return (
     <>
-      {isFetchingCurrentWeather ? (
+      {isFetchingCurrentWeather || isFetchingForecastWeather ? (
         <Loading />
       ) : (
         <>
@@ -44,12 +51,8 @@ export default function WeatherLayout() {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-x-16 md:gap-x-6 gap-y-10">
               <div className="md:col-span-1 flex flex-col gap-10">
-                <CurrentWeather
-                  data={currentWeatherData}
-                  loading={isFetchingCurrentWeather}
-                  error={weatherError}
-                />
-                <DaysForecastWeather />
+                <CurrentWeather data={currentWeatherData} />
+                <DaysForecastWeather data={forecastWeatherData} />
               </div>
               <div className="md:col-span-2 flex flex-col gap-10">
                 <TodaysHighlight />
