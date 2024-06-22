@@ -28,11 +28,19 @@ export default function WeatherLayout() {
     weatherData: forecastWeatherData,
   } = useFetchWeather({});
 
+  // AirPollution API
+  const {
+    isFetching: isFetchingAirPollution,
+    fetchWeatherData: fetchAirPollution,
+    weatherData: airPollutionData,
+  } = useFetchWeather({});
+
   useEffect(() => {
     const fetchAllData = async () => {
       if (latitude !== null && longitude !== null) {
         await fetchCurrentWeather(API_URLS.currentWeather(latitude, longitude));
         await fetchForecastWeather(API_URLS.forecast(latitude, longitude));
+        await fetchAirPollution(API_URLS.airPollution(latitude, longitude));
       }
     };
     fetchAllData();
@@ -40,7 +48,9 @@ export default function WeatherLayout() {
 
   return (
     <>
-      {isFetchingCurrentWeather || isFetchingForecastWeather ? (
+      {isFetchingCurrentWeather ||
+      isFetchingForecastWeather ||
+      isFetchingAirPollution ? (
         <Loading />
       ) : (
         <>
@@ -55,7 +65,10 @@ export default function WeatherLayout() {
                 <DaysForecastWeather data={forecastWeatherData} />
               </div>
               <div className="md:col-span-2 flex flex-col gap-10">
-                <TodaysHighlight />
+                <TodaysHighlight
+                  qualityData={airPollutionData}
+                  currentWeatherData={currentWeatherData}
+                />
                 <HourlyForecastWeather />
               </div>
             </div>
