@@ -69,7 +69,7 @@ export default function WeatherLayout() {
                   qualityData={airPollutionData}
                   currentWeatherData={currentWeatherData}
                 />
-                <HourlyForecastWeather />
+                <HourlyForecastWeather data={forecastWeatherData} />
               </div>
             </div>
           </main>
