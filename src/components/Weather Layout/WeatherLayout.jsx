@@ -19,21 +19,21 @@ export default function WeatherLayout() {
     isFetching: isFetchingCurrentWeather,
     fetchWeatherData: fetchCurrentWeather,
     weatherData: currentWeatherData,
-  } = useFetchWeather({});
+  } = useFetchWeather();
 
   // Forecast Weather API
   const {
     isFetching: isFetchingForecastWeather,
     fetchWeatherData: fetchForecastWeather,
     weatherData: forecastWeatherData,
-  } = useFetchWeather({});
+  } = useFetchWeather();
 
   // AirPollution API
   const {
     isFetching: isFetchingAirPollution,
     fetchWeatherData: fetchAirPollution,
     weatherData: airPollutionData,
-  } = useFetchWeather({});
+  } = useFetchWeather();
 
   useEffect(() => {
     const fetchAllData = async () => {
