@@ -14,7 +14,8 @@ export default function Header() {
   const [searchToggle, setSearchToggle] = useState(false);
   const [, setSearchQuery] = useState(""); // Initial search query
 
-  const { weatherData, fetchWeatherData, isFetching } = useFetchWeather();
+  const { weatherData, fetchWeatherData, isFetching, isSearching } =
+    useFetchWeather();
 
   const handleSearchToggle = () => {
     setSearchToggle((prevState) => !prevState);
@@ -60,7 +61,7 @@ export default function Header() {
               type="search"
               name="search"
               className={`search-field md:px-24 md:py-6 ${
-                isFetching && "searching"
+                isSearching && "searching"
               }`}
               placeholder="Search for city..."
               autoComplete="off"

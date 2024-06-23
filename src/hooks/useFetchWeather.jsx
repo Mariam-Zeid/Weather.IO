@@ -3,6 +3,7 @@ import { useReducer } from "react";
 
 // Initial state for weather data
 const initialState = {
+  isSearching: false,
   isFetching: true,
   weatherData: {},
   error: null,
@@ -21,11 +22,13 @@ const weatherReducer = (state, action) => {
       return {
         ...state,
         isFetching: true,
+        isSearching: true,
       };
     case ACTIONS.FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
+        isSearching: false,
         weatherData: action.payload,
         error: null,
       };
@@ -33,6 +36,7 @@ const weatherReducer = (state, action) => {
       return {
         ...state,
         isFetching: false,
+        isSearching: false,
         error: action.payload,
       };
     default:
