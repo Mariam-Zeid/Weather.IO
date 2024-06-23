@@ -1,5 +1,4 @@
 import "./HourlyForecastWeather.css";
-import weatherLogo from "../../assets/img/weather_icons/04d.png";
 import directionLogo from "../../assets/img/weather_icons/direction.png";
 import { getImageURL } from "../../util/imageUtil";
 import { timeFotmatter } from "../../util/DateAndTimeUtil";
@@ -54,6 +53,7 @@ export default function HourlyForecastWeather({ data }) {
                   width="48"
                   height="48"
                   loading="lazy"
+                  style={{ transform: `rotate(${hour.wind.deg - 180}deg)` }}
                 />
                 <p className="body-3">{mps_to_kmh(hour.wind.speed)} km/h</p>
               </div>
