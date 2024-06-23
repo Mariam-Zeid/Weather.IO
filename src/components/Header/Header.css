@@ -161,6 +161,14 @@
 .btn-primary .span {
   font-weight: var(--weight-semiBold);
 }
+.btn-primary[disabled] {
+  background-color: var(--outline);
+  color: var(--on-surface-variant);
+  cursor: not-allowed;
+}
+.btn-primary[disabled]::before {
+  display: none;
+}
 /* expanding from the center in a circular manner until it reaches its full visibility. */
 @keyframes ripple {
   0% {

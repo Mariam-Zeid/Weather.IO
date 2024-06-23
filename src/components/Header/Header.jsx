@@ -6,7 +6,8 @@ import { API_URLS } from "../../util/apiConstants";
 import { PositionContext } from "../../context/PositionContext";
 
 export default function Header() {
-  const { setNewPosition } = useContext(PositionContext);
+  const { setNewPosition, iscurrentLocation, setCurrentLocation } =
+    useContext(PositionContext);
 
   const searchInputRef = useRef(null);
 
@@ -32,6 +33,19 @@ export default function Header() {
       latitude: location.lat,
       longitude: location.lon,
     });
+    setCurrentLocation(false);
+  };
+
+  const handleLocationClick = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setNewPosition({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+        setCurrentLocation(true);
+      });
+    }
   };
 
   return (
@@ -73,7 +87,6 @@ export default function Header() {
                     <div>
                       <p className="item-title">{location.name}</p>
                       <p className="label-2 item-subtitle">
-                        {" "}
                         {location.state || ""} {location.country}
                       </p>
                     </div>
@@ -92,10 +105,14 @@ export default function Header() {
           <button className="icon-btn has-state" onClick={handleSearchToggle}>
             <span className="m-icon">search</span>
           </button>
-          <a href="#" className="btn-primary has-state">
+          <button
+            className="btn-primary has-state"
+            onClick={handleLocationClick}
+            disabled={iscurrentLocation}
+          >
             <span className="m-icon">my_location</span>
             <span className="span">Current Location</span>
-          </a>
+          </button>
         </div>
       </div>
     </header>

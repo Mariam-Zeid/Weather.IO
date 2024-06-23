@@ -3,7 +3,9 @@ import { createContext, useEffect, useState } from "react";
 export const PositionContext = createContext({
   latitude: null,
   longitude: null,
+  iscurrentLocation: true,
   setNewPosition: () => {},
+  setCurrentLocation: () => {},
 });
 
 export function PositionContextProvider({ children }) {
@@ -11,6 +13,7 @@ export function PositionContextProvider({ children }) {
     latitude: null,
     longitude: null,
   });
+  const [iscurrentLocation, setCurrentLocation] = useState(true);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -29,6 +32,8 @@ export function PositionContextProvider({ children }) {
     latitude: position.latitude,
     longitude: position.longitude,
     setNewPosition: setPosition,
+    iscurrentLocation,
+    setCurrentLocation,
   };
   return (
     <PositionContext.Provider value={ctxValue}>
