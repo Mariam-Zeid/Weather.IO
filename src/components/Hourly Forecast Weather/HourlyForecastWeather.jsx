@@ -10,8 +10,6 @@ export default function HourlyForecastWeather({ data }) {
   // Assuming data.list contains hourly forecast data
   const hourlyForecasts = data.list.slice(0, 8);
 
-  console.log(hourlyForecasts);
-
   const mps_to_kmh = (mps) => {
     const mph = mps * 3600;
     const kmh = parseInt(mph / 1000);
