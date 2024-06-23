@@ -12,9 +12,6 @@ export const API_URLS = {
   airPollution(lat, lon) {
     return `${MAIN_URL}/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
   },
-  reverseGeo(lat, lon) {
-    return `${MAIN_URL}/geo/1.0/reverse?lat=${lat}lon=&${lon}&limit=5&appid=${API_KEY}`;
-  },
   /**
    * @param {string} query search query e.g. :"london" , "New Yourk"
    */
