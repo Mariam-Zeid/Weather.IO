@@ -44,7 +44,7 @@
 
 @media (max-width: 768px) {
   .highlights .m-icon {
-    /* font-size: 3rem; */
+    font-size: 2.7rem;
   }
   .highlight-list .title-3 {
     color: var(--on-surface-variant);

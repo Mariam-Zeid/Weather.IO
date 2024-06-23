@@ -65,8 +65,8 @@ export default function TodaysHighlight({ qualityData, currentWeatherData }) {
             {currentWeatherData.weather ? (
               <div className="card card-sm highlight-card two">
                 <h3 className="title-3">Sunrise & Sunset</h3>
-                <div className="card-list flex justify-between">
-                  <div className="card-item flex items-center gap-4 md:gap-5">
+                <div className="card-list flex justify-between lg:justify-start lg:gap-12">
+                  <div className="card-item flex items-center gap- md:gap-8">
                     <span className="m-icon">clear_day</span>
                     <div>
                       <p className="label-1">Sunrise</p>
@@ -75,7 +75,7 @@ export default function TodaysHighlight({ qualityData, currentWeatherData }) {
                       </p>
                     </div>
                   </div>
-                  <div className="card-item flex items-center gap-4 md:gap-5">
+                  <div className="card-item flex items-center gap- md:gap-8">
                     <span className="m-icon">clear_night</span>
                     <div>
                       <p className="label-1">Sunset</p>
