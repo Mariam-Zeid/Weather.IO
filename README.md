@@ -1,6 +1,8 @@
 # Weather.IO
 
-🌥️ Real-time weather app build with React.js=
+🌥️ Real-time weather app build with React.js
+
+[Weather.io](https://weatherio-mz.netlify.app/).
 
 ## Features
 
