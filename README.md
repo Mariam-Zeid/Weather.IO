@@ -4,6 +4,8 @@
 
 [Weather.io](https://weatherio-mz.netlify.app/).
 
+![Weather.io](./public/Weather.IO.png)
+
 ## Features
 
 - **Current Weather**: Displays the current temperature, weather condition, and location.
